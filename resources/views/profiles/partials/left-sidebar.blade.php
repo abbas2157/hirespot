@@ -1,6 +1,6 @@
 <div class="col-md-3 mt-5">
-    <div class="card text-center shadow-lg">
-        <div class="card-body">
+    <div class="card  shadow-lg">
+        <div class="card-body text-center">
             @if(!is_null($profile))
                 @if(!is_null($profile->image))
                     <img class="rounded-circle shadow-4-strong hire_spot_img" style="width: 50%" alt="avatar2" src="{!! asset('assets/img/hire_spot.jfif') !!}" />
@@ -31,8 +31,6 @@
                     data-image="{{ $profile->image }}"> Edit Profile
                 </button>
             @endif
-        </div>
-        <!-- Basic Information Section -->
         <div class="mt-3">
             <h3>Basic Information</h3>
             <p><strong>Address:</strong> {{ $profile->city ?? 'City' }}, {{ $profile->state ?? 'State' }}</p>
@@ -40,9 +38,7 @@
         </div>
         <!-- Experience Section -->
         <div class="mt-3">
-            <h3>
-                Experience
-            </h3>
+            <h3> Experience </h3>
             <p>{{ $profile->experience ?? 'N/A' }}</p>
         </div>
         <div class="mt-3">
@@ -123,5 +119,6 @@
                 </div>
             @endforeach
         @endif
+        </div>
     </div>
 </div>

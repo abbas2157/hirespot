@@ -24,23 +24,7 @@
     <div class="sidebar-content">
       <ul class="nav nav-secondary">
         <li class="nav-item">
-            <a data-bs-toggle="collapse" href="#base"> <i class="fas fa-layer-group"></i> <p>Profile</p> <span class="caret"></span>
-            </a>
-            <div class="collapse" id="base">
-              <ul class="nav nav-collapse">
-                <li>
-                  <a href="{{ url('profile') }}">
-                    <span class="sub-item">Create</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="{{ url('profile.index') }}">
-                    <span class="sub-item">Index</span>
-                  </a>
-                </li>
-                
-              </ul>
-            </div>
+            <a data-bs-toggle="collapse" href="#base"> <i class="fas fa-layer-group"></i> <p>My Profile</p></a>
         </li>
       </ul>
     </div>
