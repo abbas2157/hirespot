@@ -3,12 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Profile;
-use App\Models\Summary;
-use App\Models\Skill;
-use App\Models\Education;
-use App\Models\WorkHistory;
-use App\Models\Project;
+use App\Models\{Profile, Summary, Skill, Education, WorkHistory, Project};
 
 class FrontendController extends Controller
 {
@@ -16,7 +11,7 @@ class FrontendController extends Controller
     {
         $profiles = Profile::select('user_id', 'first_name', 'last_name', 'image', 'job_title', 'linkedin', 'city', 'state')
             ->get();
-        return view('frontend.index', compact('profiles'));
+        return view('homepage.index', compact('profiles'));
     }    
 
     public function show($user_id)
