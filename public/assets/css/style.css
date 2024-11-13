@@ -990,3 +990,314 @@ table {
         height: 100%;
     }
 }
+.social-icons a {
+    margin: 0 5px;
+    color: #333;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+    background-color: #f9f9f9;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Profile Section */
+
+.profile-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.profile-info {
+    flex-grow: 1;
+}
+
+.profile-name {
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.profile-title {
+    font-size: 18px;
+    color: #666;
+}
+
+/* Contact Information Section */
+
+.contact-info-section {
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.contact-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.contact-info-item {
+    margin-bottom: 20px;
+    width: 50%;
+}
+
+.contact-info-label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+/* Skills Section */
+
+.skills-section {
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.skills-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.skills-list-item {
+    margin-bottom: 10px;
+}
+
+.skills-list-item::before {
+    content: "\2022";
+    font-weight: bold;
+    font-size: 18px;
+    color: #333;
+    margin-right: 10px;
+}
+
+/* Experience Section */
+
+.experience-section {
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.experience-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.experience-list-item {
+    margin-bottom: 20px;
+}
+
+.experience-list-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.experience-list-item-title {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.experience-list-item-company {
+    font-size: 16px;
+    color: #666;
+}
+
+.experience-list-item-duration {
+    font-size: 16px;
+    color: #666;
+}
+
+.experience-list-item-description {
+    font-size: 16px;
+    color: #666;
+}
+
+/* Education Section */
+
+.education-section {
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.education-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.education-list-item {
+    margin-bottom: 20px;
+}
+
+.education-list-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.education-list-item-title {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.education-list-item-institution {
+    font-size: 16px;
+    color: #666;
+}
+
+.education-list-item-duration {
+    font-size: 16px;
+    color: #666;
+}
+
+.education-list-item-description {
+    font-size: 16px;
+    color: #666;
+}
+
+/* Projects Section */
+
+.projects-section {
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.projects-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.projects-list-item {
+    margin-bottom: 20px;
+}
+
+.projects-list-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.projects-list-item-title {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.projects-list-item-description {
+    font-size: 16px;
+    color: #666;
+}
+
+/* Modal Styles */
+
+.modal-content {
+    padding: 20px;
+}
+
+
+
+/* Modal Styles */
+
+.modal-dialog {
+    max-width: 800px;
+    margin: 40px auto;
+}
+
+.modal-content {
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+    /* background-color: #f0f0f0; */
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.modal-title {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.modal-footer {
+    padding: 10px;
+    border-top: 1px solid #ddd;
+}
+
+.modal-footer .btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.modal-footer .btn-primary {
+    background-color: #4CAF50;
+    color: #fff;
+}
+
+.modal-footer .btn-secondary {
+    background-color: #ccc;
+    color: #333;
+}
+
+.custom-shadow {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+.hire_spot_img{
+    height: 100px;
+    width: 100px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+}
+
+.tab-card {
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    transition: 0.3s;
+}
+.tab-card:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.tab-card img {
+    width: 50px;
+    margin-bottom: 10px;
+}

@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\HobbyController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ReferenceController;
 use App\Http\Controllers\SkillsController;
@@ -38,13 +37,14 @@ Route::post('user/register',[AuthController::class,'store'])->name('user.registe
 Route::prefix('/')->middleware('auth')->group(function () {
     
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
-    // Profile routes
-    Route::get('/dashboard', [ProfileController::class, 'index'])->name('profiles.index');
-    Route::post('/store', [ProfileController::class, 'store'])->name('profiles.store');
-    Route::put('/update/{id}', [ProfileController::class, 'update'])->name('profiles.update');
+    Route::group(['prefix' => 'dashboard'], function(){
+        Route::get('/', [App\Http\Controllers\ProfileController::class, 'index'])->name('dashboard');
+    });
+    Route::post('/store', [App\Http\Controllers\ProfileController::class, 'store'])->name('profiles.store');
+    Route::put('/update/{id}', [App\Http\Controllers\ProfileController::class, 'update'])->name('profiles.update');
 
-    Route::post('/educations/store', [ProfileController::class, 'storeEducation'])->name('educations.store');
-    Route::put('/educations/update/{id}', [ProfileController::class, 'updateEducation'])->name('educations.update');
+    Route::post('/educations/store', [App\Http\Controllers\ProfileController::class, 'storeEducation'])->name('educations.store');
+    Route::put('/educations/update/{id}', [App\Http\Controllers\ProfileController::class, 'updateEducation'])->name('educations.update');
 
     Route::post('/references/store', [ReferenceController::class, 'store'])->name('references.store');
     Route::put('/references/update/{id}', [ReferenceController::class, 'update'])->name('references.update');
@@ -63,6 +63,4 @@ Route::prefix('/')->middleware('auth')->group(function () {
 
     Route::post('/projects/store', [ProjectController::class, 'store'])->name('projects.store');
     Route::put('/projects/update/{id}', [ProjectController::class, 'update'])->name('projects.update');
-
-
 });

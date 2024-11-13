@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\{Route,Auth};
 use App\Models\Education;
 use App\Models\Reference;
 use App\Models\Summary;
@@ -18,7 +19,7 @@ class ProfileController extends Controller
     
     public function index()
     {
-        $profiles = Profile::all();
+        $profile = Profile::where('user_id', Auth::user()->id)->first();
         $educations = Education::all();
         $references = Reference::all();
         $summary = Summary::first();
@@ -27,7 +28,7 @@ class ProfileController extends Controller
         $hobby = Hobby::all();
         $projects = Project::all();
 
-        return view('profiles.index', compact('profiles', 'educations', 'references', 'summary','work_histories', 'skills', 'hobby', 'projects'));
+        return view('profiles.index', compact('profile', 'educations', 'references', 'summary','work_histories', 'skills', 'hobby', 'projects'));
     }
 
     public function store(Request $request)

@@ -10,8 +10,7 @@
         </ul>
       </nav>
       <div class="copyright">
-        2024, made with <i class="fa fa-heart heart text-danger"></i> by
-       Afaq,Hire Spot.
+        2024, made with <i class="fa fa-heart heart text-danger"></i> by Hire Spot.
       </div>
       <div>
         Distributed by
