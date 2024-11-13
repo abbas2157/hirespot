@@ -2,153 +2,237 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hire-Spot-register</title>
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta charset="utf-8" />
+    <title>Register | Hire Spot</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
     <style>
-        body {
-            background-color: #f5f8fa;
-            font-family: 'Arial', sans-serif;
-            overflow-x: hidden;
+        .signup-body {
+            background-color: #f8f9fa;
         }
 
-        /* Main section with background image */
-        .main-section {
-            background: url('public/assets/img/home2.png') center center/cover no-repeat;
-            color: #fff;
-            text-align: center;
-            padding: 150px 0;
-        }
-
-        .main-section h1 {
-            font-size: 4rem;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
-
-        .main-section p {
-            font-size: 1.5rem;
-            margin-bottom: 0;
-        }
-
-        /* Card container styling */
-        .card-container {
-            padding: 50px 1rem;
-            margin-top: -80px;
-        }
-
-        .profile-card {
-            max-width: 400px;
-            border: none;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-            background-color: #fff;
-            position: relative;
-            padding: 100px 20px 40px;
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-            animation: fadeInUp 1s ease;
-        }
-
-        .profile-card img {
-            width: 160px;
-            height: 160px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 5px solid #fff;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-            position: absolute;
-            top: -80px;
-            left: 50%;
-            transform: translateX(-50%);
-            transition: transform 0.3s;
-        }
-
-        .profile-info {
-            padding-top: 90px;
-        }
-
-        .profile-info h4 {
-            margin: 0;
-            font-size: 1.8rem;
-            color: #333;
-        }
-
-        .profile-info p {
-            color: #777;
-            margin: 0.5rem 0;
-        }
-
-        .profile-social {
+        .signup {
+            min-height: 100vh;
             display: flex;
+            align-items: center;
             justify-content: center;
+        }
+
+        .signup-img img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .signup-form {
+            background-color: #343a40;
+            padding: 2rem;
+            border-radius: 0.5rem;
+        }
+
+        .password-container {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .password-container input {
+            padding-right: 2.5rem;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.25rem;
+            color: #000;
+            /* Black color for the icon */
+            cursor: pointer;
+        }
+
+        .invalid-feedback {
+            display: block;
+            color: #dc3545;
+        }
+
+        .keep-me-logged {
             margin-top: 1rem;
         }
 
-        .profile-social a {
-            color: #007bff;
-            margin: 0 12px;
-            font-size: 1.5rem;
-            transition: color 0.3s;
+        .forget-password a {
+            color: #f8f9fa;
         }
 
-        .profile-social a:hover {
-            color: #0056b3;
+        .forget-password a:hover {
+            text-decoration: underline;
         }
 
-        /* Fade-in animation */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
+        .save-btn {
+            background-color: #007bff;
+            border: none;
+            transition: background-color 0.3s;
+        }
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .save-btn:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
 
-<body>
-    <!-- Main Section with background image and title -->
-    <div class="main-section">
-        <h1>Hire-Spot</h1>
-        <p>Dedicated Professionals Ready To Make a Difference</p>
-    </div>
-
-    <!-- Card container -->
-    <div class="container card-container">
-        <div class="row justify-content-center">
-            <!-- Profile Card 1 -->
-            @foreach($profiles as $profile)
-            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-                <div class="profile-card">
-                    <img src="{{ asset('storage/' . $profile->image) }}" alt="{{ $profile->first_name }}'s Photo">
-                    <div class="profile-info">
-                        <h4>{{ $profile->first_name }} {{ $profile->last_name }}</h4>
-                        <p>{{ $profile->job_title }}</p>
-                        <p>Location: {{ $profile->city }}, {{ $profile->state }}</p>
-                        <div class="profile-social">
-                            <a href="{{ $profile->linkedin }}"><i class="fab fa-linkedin"></i></a>
-                            <a href="#"><i class="fab fa-github"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
+<body class="signup-body">
+    <section class="signup">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-4 col-lg-5 d-flex align-items-center justify-content-center">
+                    <img src="public/assets/img/home2.png" class="img-fluid" alt="Login Image" />
+                </div>
+                <div class="col-md-8 col-lg-5">
+                    @if (session()->has('message'))
+                        <div id="success-message" class="alert alert-success">
+                            {{ session()->get('message') }}
                         </div>
+                    @endif
+                    @if (session()->has('error'))
+                        <div id="error-message" class="alert alert-danger">
+                            {{ session()->get('error') }}
+                        </div>
+                    @endif
+                    <div class="signup-form text-white">
+                        <h2 class="mb-4">Sign Up</h2>
+                        <p class="mb-4">Please enter your credentials</p>
+                        <form method="POST" action="{{ route('user.register') }}" id="regForm"
+                            class="signup-input mt-4" enctype="multipart/form-data">
+                            @csrf
+                            <div class="password-container">
+                                <input type="text" name="name"
+                                    class="form-control @error('name') is-invalid @enderror" placeholder="Name"
+                                    required />
+                                <i class="fas fa-user password-toggle"></i>
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="password-container">
+                                <input type="email" name="email"
+                                    class="form-control @error('email') is-invalid @enderror" placeholder="Email"
+                                    required />
+                                <i class="fas fa-envelope password-toggle"></i>
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="password-container">
+                                <input type="password" id="password" name="password"
+                                    class="form-control @error('password') is-invalid @enderror"
+                                    placeholder="Password" />
+                                <i class="fas fa-lock password-toggle"
+                                    onclick="togglePasswordVisibility('password')"></i>
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="row text-white keep-me-logged">
+                                <div class="col-md-6 d-flex align-items-center">
+                                    <input type="checkbox" class="form-check-input me-2" id="keep-me-signed-in" />
+                                    <label class="form-check-label" for="keep-me-signed-in">Keep me signed in</label>
+                                </div>
+                                <div class="col-md-6 text-end forget-password">
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalToggle">
+                                        Forgot Password?
+                                    </a>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn save-btn text-white w-100 mt-3">
+                                Sign up
+                            </button>
+                            <a class="btn btn-secondary text-white w-100 mt-2" href="{{ route('login') }}">Have
+                                an Account? Login</a>
+                        </form>
                     </div>
                 </div>
             </div>
-            @endforeach
         </div>
-    </div>
+    </section>
 
-    <!-- Bootstrap 5 JS Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.min.js"></script>
+    <!-- Template Javascript -->
+    <script>
+        $(document).ready(function() {
+            $('#regForm').validate({
+                errorClass: "invalid-feedback",
+                validClass: "valid-feedback",
+                rules: {
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    password: {
+                        required: true,
+                        minlength: 3
+                    }
+                },
+                messages: {
+                    email: {
+                        required: "Please enter your email",
+                        email: "Please enter a valid email address"
+                    },
+                    password: {
+                        required: "Please enter your password",
+                        minlength: "Your password must be at least 8 characters long"
+                    }
+                },
+                highlight: function(element) {
+                    $(element).addClass('is-invalid').removeClass('is-valid');
+                },
+                unhighlight: function(element) {
+                    $(element).removeClass('is-invalid').addClass('is-valid');
+                },
+                submitHandler: function(form) {
+                    form.submit();
+                }
+            });
+        });
+
+        function togglePasswordVisibility(id) {
+            var passwordField = document.getElementById(id);
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+            } else {
+                passwordField.type = 'password';
+            }
+        }
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var successMessage = document.getElementById('success-message');
+            if (successMessage) {
+                setTimeout(function() {
+                    successMessage.style.display = 'none';
+                }, 10000); // 10000 milliseconds = 10 seconds
+            }
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+            var errorMessage = document.getElementById('error-message');
+            if (errorMessage) {
+                setTimeout(function() {
+                    errorMessage.style.display = 'none';
+                }, 10000); // 10000 milliseconds = 10 seconds
+            }
+        });
+    </script>
 </body>
 
 </html>
+
+
