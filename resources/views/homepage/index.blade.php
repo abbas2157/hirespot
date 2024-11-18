@@ -8,17 +8,17 @@
     @include('homepage.partials.about-section')
     <!-- /About Section -->
 
-    <!-- Services Section -->
-    @include('homepage.partials.service-section')
-    <!-- /Services Section -->
-
     <!-- Portfolio Section -->
-    @include('homepage.partials.portfolio-section')
+    {{-- @include('homepage.partials.portfolio-section') --}}
     <!-- /Portfolio Section -->
 
     <!-- Team Section -->
     @include('homepage.partials.team-section')
     <!-- /Team Section -->
+
+    <!-- Services Section -->
+    @include('homepage.partials.service-section')
+    <!-- /Services Section -->
 
     <!-- Contact Section -->
     @include('homepage.partials.contact-section')

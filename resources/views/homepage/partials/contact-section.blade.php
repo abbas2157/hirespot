@@ -14,7 +14,7 @@
             <i class="bi bi-geo-alt flex-shrink-0"></i>
             <div>
                 <h3>Address</h3>
-                <p>A108 Adam Street, New York, NY 535022</p>
+                <p>89 A, Hostel Butt St, Aitchison Society Lahore, Punjab</p>
             </div>
             </div><!-- End Info Item -->
 
@@ -22,7 +22,7 @@
             <i class="bi bi-telephone flex-shrink-0"></i>
             <div>
                 <h3>Call Us</h3>
-                <p>+1 5589 55488 55</p>
+                <p>+92 306 4164000</p>
             </div>
             </div><!-- End Info Item -->
 
@@ -30,7 +30,7 @@
             <i class="bi bi-envelope flex-shrink-0"></i>
             <div>
                 <h3>Email Us</h3>
-                <p>info@example.com</p>
+                <p>info@hirespot.com</p>
             </div>
             </div><!-- End Info Item -->
 

@@ -6,7 +6,7 @@
         <div class="carousel-item active">
         <div class="carousel-container">
             <h2 class="animate__animated animate__fadeInDown">Welcome to <span> Hire Spot</span></h2>
-            <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
+            <p class="animate__animated animate__fadeInUp">Start your career journey with Hire Spot. It helps to build a strong portfolio and showcase skills, experiences as well as qualifications. It's an easy and perfect way to connect with the right job opportunities and take next step in your career.</p>
             <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
         </div>
         </div>
@@ -14,8 +14,8 @@
         <!-- Slide 2 -->
         <div class="carousel-item">
         <div class="carousel-container">
-            <h2 class="animate__animated animate__fadeInDown">Lorem Ipsum Dolor</h2>
-            <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
+            <h2 class="animate__animated animate__fadeInDown">Your Dream Job Awaits</h2>
+            <p class="animate__animated animate__fadeInUp">Hire Spot is a platform created to bring people together and make it easy for you to showcase your skills and experiences.</p>
             <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
         </div>
         </div>
@@ -23,8 +23,8 @@
         <!-- Slide 3 -->
         <div class="carousel-item">
         <div class="carousel-container">
-            <h2 class="animate__animated animate__fadeInDown">Sequi ea ut et est quaerat</h2>
-            <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
+            <h2 class="animate__animated animate__fadeInDown">Start Now</h2>
+            <p class="animate__animated animate__fadeInUp"> We understand the difficulty of competing in today's job market, which is why our goal is to give you all of the tools needed for success. </p>
             <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
         </div>
         </div>
