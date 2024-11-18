@@ -35,8 +35,19 @@ Route::get('register', function () {return view('auth.register');})->name('regis
 Route::post('user/register',[AuthController::class,'store'])->name('user.register');
 
 Route::prefix('/')->middleware('auth')->group(function () {
-    
+
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+    Route::group(['prefix' => 'admin'], function() {
+        Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('admin.index');
+        Route::get('/users/create', [App\Http\Controllers\UserController::class, 'create'])->name('users.create');
+        Route::post('/users', [App\Http\Controllers\UserController::class, 'store'])->name('users.store');
+        Route::get('/users/{user}/edit', [App\Http\Controllers\UserController::class, 'edit'])->name('users.edit');
+        Route::put('/users/{user}', [App\Http\Controllers\UserController::class, 'update'])->name('users.update');
+        Route::delete('/users/{user}', [App\Http\Controllers\UserController::class, 'destroy'])->name('users.destroy');
+    });
+
+
     Route::group(['prefix' => 'dashboard'], function(){
         Route::get('/', [App\Http\Controllers\ProfileController::class, 'index'])->name('dashboard');
     });
@@ -51,7 +62,7 @@ Route::prefix('/')->middleware('auth')->group(function () {
 
     Route::post('/summary/store', [SummaryController::class, 'store'])->name('summary.store');
     Route::put('/summary/{id}/update', [SummaryController::class, 'update'])->name('summary.update');
-    
+
     Route::post('/work_history/store', [WorkHistoryController::class, 'store'])->name('work_history.store');
     Route::put('/work_history/update/{id}', [WorkHistoryController::class, 'update'])->name('work_history.update');
 

@@ -34,28 +34,31 @@ class AuthController extends Controller
             'email' => 'required',
             'password' => 'required',
         ]);
-    
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
-    
+
         return redirect('/')->with('success', 'User Added Successfully');
     }
 
     public function login(Request $request)
     {
         $request->validate([
-            'email'=>'required',
-            'password'=>'required',
-
+            'email' => 'required',
+            'password' => 'required',
         ]);
-        if(Auth::attempt($request->only('email','password')));
-        {
+
+        if (Auth::attempt($request->only('email', 'password'))) {
+            if (Auth::user()->email === 'admin@admingmail.com') {
+                return redirect()->route('admin.index');
+            }
             return redirect('/dashboard');
         }
-        return redirect('login')->withErrors(['default' => 'invalid user details']);
+
+        return redirect('login')->withErrors(['default' => 'Invalid user details']);
     }
 
     public function logout(Request $request)
@@ -63,7 +66,7 @@ class AuthController extends Controller
         $request->session()->flush();
         $request->session()->token();
         Auth::logout();
-    
+
         return redirect('/login');
     }
     /**
