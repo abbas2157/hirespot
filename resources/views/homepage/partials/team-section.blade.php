@@ -10,7 +10,7 @@
             @if($profiles->isNotEmpty())
                 @foreach ($profiles as $item)
                     <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
-                        <a href="sss">
+                        <a href="{{ route('frontend.profile.show', $item->user_id) }}">
                             <div class="team-member">
                                 <div class="member-img">
                                     <img src="{{ asset('frontend/img/team/team-1.jpg') }}" class="img-fluid" alt="">

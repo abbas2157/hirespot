@@ -17,14 +17,22 @@ class FrontendController extends Controller
     public function show($user_id)
     {
         $profile = Profile::where('user_id', $user_id)->firstOrFail();
-        $summary = Summary::where('user_id', $user_id)->first();
-        $skills = Skill::where('user_id', $user_id)->first();
-        $educations = Education::where('user_id', $user_id)->get();
-        $workHistories = WorkHistory::where('user_id', $user_id)->get();
-        $projects = Project::where('user_id', $user_id)->get();
-
-        $skills = $skills ? $skills->skills : [];
-        
-        return view('frontend.details', compact('profile', 'projects', 'summary', 'skills', 'educations', 'workHistories'));
+        return view('landing-page.index', compact('profile'));
     }
+    public function resume($user_id)
+    {
+        $profile = Profile::where('user_id', $user_id)->firstOrFail();
+        return view('landing-page.resume', compact('profile'));
+    }
+    public function projects($user_id)
+    {
+        $profile = Profile::where('user_id', $user_id)->firstOrFail();
+        return view('landing-page.projects', compact('profile'));
+    }
+    public function contact($user_id)
+    {
+        $profile = Profile::where('user_id', $user_id)->firstOrFail();
+        return view('landing-page.contact', compact('profile'));
+    }
+
 }

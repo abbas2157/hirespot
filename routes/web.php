@@ -22,12 +22,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('frontend.index');
-});
-Route::get('/',[FrontendController::class,'index'])->name('frontend.index');
-Route::get('/profile/{user_id}', [FrontendController::class, 'show'])->name('frontend.profile.show');
 
+Route::get('/',[FrontendController::class,'index'])->name('frontend.index');
+Route::get('{user_id}', [FrontendController::class, 'show'])->name('frontend.profile.show');
+Route::get('{user_id}/resume', [FrontendController::class, 'resume'])->name('frontend.profile.resume');
+Route::get('{user_id}/projects', [FrontendController::class, 'projects'])->name('frontend.profile.projects');
+Route::get('{user_id}/contact', [FrontendController::class, 'contact'])->name('frontend.profile.contact');
 
 Route::get('/login', function () {return view('auth.login');})->name('login');
 Route::post('user/login',[AuthController::class,'login'])->name('user.login');
@@ -46,7 +46,6 @@ Route::prefix('/')->middleware('auth')->group(function () {
         Route::put('/users/{user}', [App\Http\Controllers\UserController::class, 'update'])->name('users.update');
         Route::delete('/users/{user}', [App\Http\Controllers\UserController::class, 'destroy'])->name('users.destroy');
     });
-
 
     Route::group(['prefix' => 'dashboard'], function(){
         Route::get('/', [App\Http\Controllers\ProfileController::class, 'index'])->name('dashboard');
