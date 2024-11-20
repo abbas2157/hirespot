@@ -13,12 +13,11 @@
                         <a href="{{ route('frontend.profile.show', $item->user_id) }}">
                             <div class="team-member">
                                 <div class="member-img">
-                                    <img src="{{ asset('frontend/img/team/team-1.jpg') }}" class="img-fluid" alt="">
-                                </div>
+                                    <img src="{{ $item->image ? asset('storage/' . $item->image) : asset('frontend/img/team/team-1.jpg') }}" class="img-fluid" alt="">                                </div>
                                 <div class="member-info">
                                     <h4>{{ $item->first_name ?? 'First Name' }} {{ $item->last_name ?? 'Last Name' }}</h4>
-                                    <span>+92 306 4164077</span>
-                                    <span>Sr. Software Engineer at Zoom Digital</span>
+                                    <span>{{ $item->mobile ?? '012345' }} </span>
+                                    <span>{{ $item->job_title ?? 'Engineer' }}</span>
                                 </div>
                             </div>
                         </a>

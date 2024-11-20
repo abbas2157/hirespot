@@ -13,12 +13,12 @@
                 <div class="col-xxl-5">
                     <!-- Header text content-->
                     <div class="text-center text-xxl-start">
-                        <div class="badge bg-gradient-primary-to-secondary text-white mb-4"><div class="text-uppercase">Sr. Software Engineer at Zoom Digital</div></div>
+                        <div class="badge bg-gradient-primary-to-secondary text-white mb-4"><div class="text-uppercase">{{ $profile->job_title ?? 'Engineer' }}</div></div>
                         <div class="fs-3 fw-light text-muted">I can help your business to</div>
                         <h1 class="display-3 fw-bolder mb-5"><span class="text-gradient d-inline">Get online and grow fast</span></h1>
                         <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xxl-start mb-3">
-                            <a class="btn btn-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder" href="resume.html">Resume</a>
-                            <a class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder" href="projects.html">Projects</a>
+                            <a class="btn btn-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder" href="{{ route('frontend.profile.resume', $profile->user_id) }}">Resume</a>
+                            <a class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder" href="{{ route('frontend.profile.projects', $profile->user_id) }}">Projects</a>
                         </div>
                     </div>
                 </div>
@@ -28,7 +28,7 @@
                         <div class="profile bg-gradient-primary-to-secondary">
                             <!-- TIP: For best results, use a photo with a transparent background like the demo example below-->
                             <!-- Watch a tutorial on how to do this on YouTube (link)-->
-                            <img class="profile-img" src="{!! asset('landing-page/img/mudassar-abbas.png') !!}" alt="..." />
+                            <img class="profile-img" src="{{ $profile->image ? asset('storage/' . $profile->image) : asset('frontend/img/team/team-1.jpg') }}" alt="..." />
                             <div class="dots-1">
                                 <!-- SVG Dots-->
                                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 191.6 1215.4" style="enable-background: new 0 0 191.6 1215.4" xml:space="preserve">
@@ -158,7 +158,7 @@
                         <p class="text-muted">{{ $summary->summary ?? ''}}</p>
                         <div class="d-flex justify-content-center fs-2 gap-4">
                             <a class="text-gradient" href="#!"><i class="bi bi-twitter"></i></a>
-                            <a class="text-gradient" href="#!"><i class="bi bi-linkedin"></i></a>
+                            <a class="text-gradient" href="{{ $profile->linkedin ?? '' }}"><i class="bi bi-linkedin"></i></a>
                             <a class="text-gradient" href="#!"><i class="bi bi-github"></i></a>
                         </div>
                     </div>

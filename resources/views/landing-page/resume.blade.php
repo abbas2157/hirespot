@@ -24,83 +24,50 @@
                         </a>
                     </div>
                     <!-- Experience Card 1-->
-                    <div class="card shadow border-0 rounded-4 mb-5">
-                        <div class="card-body p-5">
-                            <div class="row align-items-center gx-5">
-                                <div class="col text-center text-lg-start mb-4 mb-lg-0">
-                                    <div class="bg-light p-4 rounded-4">
-                                        <div class="text-primary fw-bolder mb-2">2019 - Present</div>
-                                        <div class="small fw-bolder">Web Developer</div>
-                                        <div class="small text-muted">Stark Industries</div>
-                                        <div class="small text-muted">Los Angeles, CA</div>
+                    @foreach ($workHistory as $experience)
+                        <div class="card shadow border-0 rounded-4 mb-5">
+                            <div class="card-body p-5">
+                                <div class="row align-items-center gx-5">
+                                    <div class="col text-center text-lg-start mb-4 mb-lg-0">
+                                        <div class="bg-light p-4 rounded-4">
+                                            <div class="text-primary fw-bolder mb-2">{{ $experience->start_date ?? ''}} - {{ $experience->end_date ?? 'Present'}}</div>
+                                            <div class="small fw-bolder">{{ $experience->job_title ?? ''}}</div>
+                                            <div class="small text-muted">{{ $experience->company ?? ''}}</div>
+                                            <div class="small text-muted">{{ $experience->city ?? ''}}, {{ $experience->country ?? ''}}</div>
+                                        </div>
                                     </div>
+                                    <div class="col-lg-8"><div>{{ $experience->description ?? ''}}</div></div>
                                 </div>
-                                <div class="col-lg-8"><div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus laudantium, voluptatem quis repellendus eaque sit animi illo ipsam amet officiis corporis sed aliquam non voluptate corrupti excepturi maxime porro fuga.</div></div>
                             </div>
                         </div>
-                    </div>
-                    <!-- Experience Card 2-->
-                    <div class="card shadow border-0 rounded-4 mb-5">
-                        <div class="card-body p-5">
-                            <div class="row align-items-center gx-5">
-                                <div class="col text-center text-lg-start mb-4 mb-lg-0">
-                                    <div class="bg-light p-4 rounded-4">
-                                        <div class="text-primary fw-bolder mb-2">2017 - 2019</div>
-                                        <div class="small fw-bolder">SEM Specialist</div>
-                                        <div class="small text-muted">Wayne Enterprises</div>
-                                        <div class="small text-muted">Gotham City, NY</div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-8"><div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus laudantium, voluptatem quis repellendus eaque sit animi illo ipsam amet officiis corporis sed aliquam non voluptate corrupti excepturi maxime porro fuga.</div></div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </section>
                 <!-- Education Section-->
                 <section>
                     <h2 class="text-secondary fw-bolder mb-4">Education</h2>
                     <!-- Education Card 1-->
-                    <div class="card shadow border-0 rounded-4 mb-5">
-                        <div class="card-body p-5">
-                            <div class="row align-items-center gx-5">
-                                <div class="col text-center text-lg-start mb-4 mb-lg-0">
-                                    <div class="bg-light p-4 rounded-4">
-                                        <div class="text-secondary fw-bolder mb-2">2015 - 2017</div>
-                                        <div class="mb-2">
-                                            <div class="small fw-bolder">Barnett College</div>
-                                            <div class="small text-muted">Fairfield, NY</div>
-                                        </div>
-                                        <div class="fst-italic">
-                                            <div class="small text-muted">Master's</div>
-                                            <div class="small text-muted">Web Development</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-8"><div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus laudantium, voluptatem quis repellendus eaque sit animi illo ipsam amet officiis corporis sed aliquam non voluptate corrupti excepturi maxime porro fuga.</div></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Education Card 2-->
-                    <div class="card shadow border-0 rounded-4 mb-5">
-                        <div class="card-body p-5">
-                            <div class="row align-items-center gx-5">
-                                <div class="col text-center text-lg-start mb-4 mb-lg-0">
-                                    <div class="bg-light p-4 rounded-4">
-                                        <div class="text-secondary fw-bolder mb-2">2011 - 2015</div>
-                                        <div class="mb-2">
-                                            <div class="small fw-bolder">ULA</div>
-                                            <div class="small text-muted">Los Angeles, CA</div>
-                                        </div>
-                                        <div class="fst-italic">
-                                            <div class="small text-muted">Undergraduate</div>
-                                            <div class="small text-muted">Computer Science</div>
+                    @foreach ($education as $education)
+                        <div class="card shadow border-0 rounded-4 mb-5">
+                            <div class="card-body p-5">
+                                <div class="row align-items-center gx-5">
+                                    <div class="col text-center text-lg-start mb-4 mb-lg-0">
+                                        <div class="bg-light p-4 rounded-4">
+                                            <div class="text-secondary fw-bolder mb-2">{{ $education->year_completion ?? ''}}</div>
+                                            <div class="mb-2">
+                                                <div class="small fw-bolder">{{ $education->institute ?? ''}}</div>
+                                                <div class="small text-muted">{{ $education->city ?? ''}}</div>
+                                            </div>
+                                            <div class="fst-italic">
+                                                <div class="small text-muted">{{ $education->degree_title ?? ''}}</div>
+                                                <div class="small text-muted">{{ $education->cgpa_percentage ?? ''}}</div>
+                                            </div>
                                         </div>
                                     </div>
+                                    <div class="col-lg-8"><div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus laudantium, voluptatem quis repellendus eaque sit animi illo ipsam amet officiis corporis sed aliquam non voluptate corrupti excepturi maxime porro fuga.</div></div>
                                 </div>
-                                <div class="col-lg-8"><div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus laudantium, voluptatem quis repellendus eaque sit animi illo ipsam amet officiis corporis sed aliquam non voluptate corrupti excepturi maxime porro fuga.</div></div>
                             </div>
                         </div>
-                    </div>
+                    @endforeach
                 </section>
                 <!-- Divider-->
                 <div class="pb-5"></div>
@@ -116,14 +83,11 @@
                                     <h3 class="fw-bolder mb-0"><span class="text-gradient d-inline">Professional Skills</span></h3>
                                 </div>
                                 <div class="row row-cols-1 row-cols-md-3 mb-4">
-                                    <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">SEO/SEM Marketing</div></div>
-                                    <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Statistical Analysis</div></div>
-                                    <div class="col"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Web Development</div></div>
-                                </div>
-                                <div class="row row-cols-1 row-cols-md-3">
-                                    <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Network Security</div></div>
-                                    <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Adobe Software Suite</div></div>
-                                    <div class="col"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">User Interface Design</div></div>
+                                    @foreach ($skills->skills as $skill)
+                                        <div class="col mb-4 mb-md-0">
+                                            <div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">{{ $skill }}</div>
+                                        </div>
+                                    @endforeach
                                 </div>
                             </div>
                             <!-- Languages list-->
