@@ -23,11 +23,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/',[FrontendController::class,'index'])->name('frontend.index');
-Route::get('{user_id}', [FrontendController::class, 'show'])->name('frontend.profile.show');
-Route::get('{user_id}/resume', [FrontendController::class, 'resume'])->name('frontend.profile.resume');
-Route::get('{user_id}/projects', [FrontendController::class, 'projects'])->name('frontend.profile.projects');
-Route::get('{user_id}/contact', [FrontendController::class, 'contact'])->name('frontend.profile.contact');
+
 
 Route::get('/login', function () {return view('auth.login');})->name('login');
 Route::post('user/login',[AuthController::class,'login'])->name('user.login');
@@ -74,3 +70,9 @@ Route::prefix('/')->middleware('auth')->group(function () {
     Route::post('/projects/store', [ProjectController::class, 'store'])->name('projects.store');
     Route::put('/projects/update/{id}', [ProjectController::class, 'update'])->name('projects.update');
 });
+
+Route::get('/',[FrontendController::class,'index'])->name('frontend.index');
+Route::get('{user_id}', [FrontendController::class, 'show'])->name('frontend.profile.show');
+Route::get('{user_id}/resume', [FrontendController::class, 'resume'])->name('frontend.profile.resume');
+Route::get('{user_id}/projects', [FrontendController::class, 'projects'])->name('frontend.profile.projects');
+Route::get('{user_id}/contact', [FrontendController::class, 'contact'])->name('frontend.profile.contact');
