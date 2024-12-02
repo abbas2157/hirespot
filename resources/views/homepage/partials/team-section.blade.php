@@ -13,7 +13,7 @@
                         <a href="{{ route('frontend.profile.show', $item->user_id) }}">
                             <div class="team-member">
                                 <div class="member-img">
-                                    <img src="{{ $item->image ? asset('storage/' . $item->image) : asset('frontend/img/team/team-1.jpg') }}" class="img-fluid" alt="">                                </div>
+                                    <img src="{{ asset('frontend/img/team/team-1.jpg') }}" class="img-fluid" alt="">                                </div>
                                 <div class="member-info">
                                     <h4>{{ $item->first_name ?? 'First Name' }} {{ $item->last_name ?? 'Last Name' }}</h4>
                                     <span>{{ $item->mobile ?? '012345' }} </span>
