@@ -61,8 +61,13 @@ Route::prefix('/')->middleware('auth')->group(function () {
     Route::post('/work_history/store', [WorkHistoryController::class, 'store'])->name('work_history.store');
     Route::put('/work_history/update/{id}', [WorkHistoryController::class, 'update'])->name('work_history.update');
 
-    Route::post('/skills/store', [SkillsController::class, 'store'])->name('skills.store');
-    Route::put('/skills/update/{id}', [SkillsController::class, 'update'])->name('skills.update');
+    Route::get('skills', [SkillsController::class, 'index'])->name('skills.index');
+    Route::get('skills/create', [SkillsController::class, 'create'])->name('skills.create');
+    Route::post('skills', [SkillsController::class, 'store'])->name('skills.store');
+    Route::get('skills/search', [SkillsController::class, 'search'])->name('skills.search');
+    Route::get('skills/{skill}/edit', [SkillsController::class, 'edit'])->name('skills.edit');
+    Route::put('skills/{skill}', [SkillsController::class, 'update'])->name('skills.update');
+    Route::delete('skills/{skill}', [SkillsController::class, 'destroy'])->name('skills.destroy');
 
     Route::post('/hobby/store', [HobbyController::class, 'store'])->name('hobby.store');
     Route::put('/hobby/update/{id}', [HobbyController::class, 'update'])->name('hobby.update');

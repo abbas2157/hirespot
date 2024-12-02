@@ -1,45 +1,47 @@
-<div class="modal fade" id="skillsModal" tabindex="-1" aria-labelledby="skillsModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="skillsModalLabel">{{ $skills->isEmpty() ? 'Add Skills' : 'Edit Skills' }}</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            
-            <div class="modal-body">
-                <form id="skillsForm" action="{{ $skills->isEmpty() ? route('skills.store') : route('skills.update', $skills->first()->id) }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    @if(!$skills->isEmpty())
-                        @method('PUT')
-                    @endif
-                    @if(!$skills->isEmpty())
-                        <input type="hidden" name="id" value="{{ $skills->first()->id }}">
-                    @endif
-                    
-                    <div id="skillInputs">
-                        @if(!$skills->isEmpty())
-                            @foreach($skills->first()->skills as $index => $skill)
-                                <div class="form-group mb-2 d-flex align-items-center">
-                                    <input type="checkbox" class="me-2" title="Mark as primary skill">
-                                    <input type="text" class="form-control me-2" name="skills[]" value="{{ $skill }}" placeholder="Skill name" required>
-                                    <button type="button" class="btn btn-danger btn-sm removeSkill">&times;</button>
-                                </div>
+@extends('layouts.master')
+@section('content')
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            @if (session('status'))
+                <div class="alert alert-success">{{ session('status') }}</div>
+            @endif
+
+            <div class="card mt-3">
+                <div class="card-header">
+                    <h4>Skills
+                        <a href="{{ route('skills.create') }}" class="btn btn-primary float-end">Add Skills</a>
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Skills</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($skills as $skill)
+                                <tr>
+                                    <td>{{ $skill->id }}</td>
+                                    <td>{{ $skill->title }}</td>
+                                    <td>
+                                        <a href="{{ route('skills.edit', $skill->id) }}" class="btn btn-success">Edit</a>
+                                        <form action="{{ route('skills.destroy', $skill->id) }}" method="POST" style="display: inline-block;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
                             @endforeach
-                        @else
-                            <div class="form-group mb-2 d-flex align-items-center">
-                                <input type="checkbox" class="me-2" title="Mark as primary skill">
-                                <input type="text" class="form-control me-2" name="skills[]" placeholder="Skill name" required>
-                                <button type="button" class="btn btn-danger btn-sm removeSkill">&times;</button>
-                            </div>
-                        @endif
-                    </div>
-                    <button type="button" id="addMoreSkill" class="btn btn-link p-0">+ Add More</button>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary" id="saveSkills">Save</button>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
 </div>
+@endsection

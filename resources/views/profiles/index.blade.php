@@ -2,7 +2,7 @@
 @section('title')
 <title>Profile | Hire Spot</title>
 @endsection
-@section('content')
+{{-- @section('content')
     <div class="container mt-5 p-5">
         <div class="row p-4">
             @include('profiles.partials.left-sidebar')
@@ -24,12 +24,12 @@
             const checkbox = document.getElementById(checkboxId);
             if (checkbox.checked) {
                 endDateInput.disabled = true;
-                endDateInput.value = ''; 
+                endDateInput.value = '';
             } else {
                 endDateInput.disabled = false;
             }
         }
-    
+
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('end_date_experience').disabled = false;
             document.getElementById('end_date_project').disabled = false;
@@ -40,8 +40,8 @@
     // Clear form data for adding a new experience
     function clearForm() {
         $('#experienceModalLabel').text('Add Experience');
-        $('#experienceForm')[0].reset(); 
-        $('#experienceForm').attr('action', '{{ route('work_history.store') }}'); 
+        $('#experienceForm')[0].reset();
+        $('#experienceForm').attr('action', '{{ route('work_history.store') }}');
         $('#experienceForm').find('input[name="_method"]').remove();
         $('#currently_project_here').prop('checked', false);
         toggleEndDate('currently_project_here', 'end_date_experience');
@@ -50,8 +50,8 @@
 
     function editExperience(experience) {
         $('#experienceModalLabel').text('Edit Experience');
-        $('#experienceForm').attr('action', '{{ route('work_history.update', '') }}/' + experience.id); 
-        $('#experienceForm').append('<input type="hidden" name="_method" value="PUT">'); 
+        $('#experienceForm').attr('action', '{{ route('work_history.update', '') }}/' + experience.id);
+        $('#experienceForm').append('<input type="hidden" name="_method" value="PUT">');
 
         $('.job_title').val(experience.job_title);
         $('.company').val(experience.company);
@@ -79,10 +79,10 @@
         $(document).ready(function() {
             $('.work_history_title').hover(
                 function() {
-                    $(this).find('.experience-edit-btn').show(); 
-                }, 
+                    $(this).find('.experience-edit-btn').show();
+                },
                 function() {
-                    $(this).find('.experience-edit-btn').hide();  
+                    $(this).find('.experience-edit-btn').hide();
                 }
             );
             $('.edit-btn').click(function() {
@@ -95,10 +95,10 @@
         $(document).ready(function() {
             $('.projectTitle').hover(
                 function() {
-                    $(this).find('.edit-btn-project').show(); 
-                }, 
+                    $(this).find('.edit-btn-project').show();
+                },
                 function() {
-                    $(this).find('.edit-btn-project').hide();  
+                    $(this).find('.edit-btn-project').hide();
                 }
             );
             $('.edit-btn').click(function() {
@@ -109,7 +109,7 @@
 
     <script>
         $('#profileModal').on('show.bs.modal', function (event) {
-            var button = $(event.relatedTarget); 
+            var button = $(event.relatedTarget);
 
             var id = button.data('id');
             var firstName = button.data('first-name');
@@ -137,7 +137,7 @@
             modal.find('input[name="job_title"]').val(jobTitle);
             modal.find('input[name="current_company"]').val(currentCompany);
             modal.find('input[name="linkedin"]').val(linkedin);
-            modal.find('#imagePreview').attr('src', imageSrc); 
+            modal.find('#imagePreview').attr('src', imageSrc);
         });
 
         $('#profileImage').change(function(e) {
@@ -153,7 +153,7 @@
     <script>
         $(document).ready(function() {
         let skillCount = 1;
-        
+
         $('#addMoreSkill').on('click', function() {
             skillCount++;
             const newSkill = `
@@ -164,11 +164,11 @@
                 </div>`;
             $('#skillInputs').append(newSkill);
         });
-        
+
         $('#skillsForm').on('click', '.removeSkill', function() {
             $(this).parent().remove();
         });
-        
+
         $('#saveSkills').on('click', function() {
             $('#skillsForm').submit();
         });
@@ -179,7 +179,7 @@
     <script>
         $(document).ready(function() {
         let hobbyCount = 1;
-        
+
         $('#addMoreHobby').on('click', function() {
             hobbyCount++;
             const newSkill = `
@@ -190,7 +190,7 @@
                 </div>`;
             $('#hobbyInputs').append(newSkill);
         });
-        
+
         $('#hobbyForm').on('click', '.removeHobby', function() {
             $(this).parent().remove();
         });
@@ -198,7 +198,7 @@
         $('#saveHobby').on('click', function() {
             $('#hobbyForm').submit();
         });
-    
+
     });
     </script>
     <!-- End Hobbies jQuery -->
@@ -206,7 +206,7 @@
     <!-- Start Reference jQuery -->
     <script>
         $('#referenceModal').on('show.bs.modal', function (event) {
-            var button = $(event.relatedTarget); 
+            var button = $(event.relatedTarget);
 
             var id = button.data('id');
             var name = button.data('name');
@@ -230,18 +230,18 @@
         // Clear form data for adding a new experience
         function clearForm() {
             $('#projectModalLabel').text('Add Project');
-            $('#projectForm')[0].reset(); 
+            $('#projectForm')[0].reset();
             $('#projectForm').attr('action', '{{ route('projects.store') }}');
             $('#projectForm').find('input[name="_method"]').remove();
             $('#currently_project_here').prop('checked', false);
             toggleEndDate('currently_project_here', 'end_date_project');
             $('input[name="id"]').val('');
         }
-    
+
         function editProject(project) {
             $('#projectModalLabel').text('Edit Project');
-            $('#projectForm').attr('action', '{{ route('projects.update', '') }}/' + project.id); 
-            $('#projectForm').append('<input type="hidden" name="_method" value="PUT">'); 
+            $('#projectForm').attr('action', '{{ route('projects.update', '') }}/' + project.id);
+            $('#projectForm').append('<input type="hidden" name="_method" value="PUT">');
 
             // Populate fields
             $('#project_title').val(project.title); // Make sure the IDs match
@@ -263,6 +263,6 @@
             }
         }
 
-    
+
     </script>
-@endsection
+@endsection --}}

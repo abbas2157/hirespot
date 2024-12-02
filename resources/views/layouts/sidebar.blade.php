@@ -26,6 +26,9 @@
         <li class="nav-item">
             <a data-bs-toggle="collapse" href="#base"> <i class="fas fa-layer-group"></i> <p>My Profile</p></a>
         </li>
+        <li class="nav-item">
+            <a data-bs-toggle="" href="{{route('skills.index')}}"> <i class="fas fa-layer-group"></i>Skills</a>
+        </li>
       </ul>
     </div>
   </div>

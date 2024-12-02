@@ -9,8 +9,10 @@ class Skill extends Model
 {
     use HasFactory;
 
-    protected $casts = [
-        'skills' => 'array',
-        'user_id',
-    ];
+    protected $fillable = ['title'];
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'skill_user');
+    }
 }
