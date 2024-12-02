@@ -30,7 +30,7 @@
             <i class="bi bi-envelope flex-shrink-0"></i>
             <div>
                 <h3>Email Us</h3>
-                <p>info@hirespot.com</p>
+                <p>contact@hirespot.com</p>
             </div>
             </div><!-- End Info Item -->
 
