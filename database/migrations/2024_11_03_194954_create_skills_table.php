@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('skills', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->unique();
+            $table->string('title')->collation('utf8_bin');
             $table->timestamps();
         });
     }
