@@ -23,60 +23,26 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-
-
-Route::get('/login', function () {return view('auth.login');})->name('login');
-Route::post('user/login',[AuthController::class,'login'])->name('user.login');
-Route::get('register', function () {return view('auth.register');})->name('register');
-Route::post('user/register',[AuthController::class,'store'])->name('user.register');
-
-Route::prefix('/')->middleware('auth')->group(function () {
-
-    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
-
-    Route::group(['prefix' => 'admin'], function() {
-        Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('admin.index');
-        Route::get('/users/create', [App\Http\Controllers\UserController::class, 'create'])->name('users.create');
-        Route::post('/users', [App\Http\Controllers\UserController::class, 'store'])->name('users.store');
-        Route::get('/users/{user}/edit', [App\Http\Controllers\UserController::class, 'edit'])->name('users.edit');
-        Route::put('/users/{user}', [App\Http\Controllers\UserController::class, 'update'])->name('users.update');
-        Route::delete('/users/{user}', [App\Http\Controllers\UserController::class, 'destroy'])->name('users.destroy');
-    });
-
-    Route::group(['prefix' => 'dashboard'], function(){
-        Route::get('/', [App\Http\Controllers\ProfileController::class, 'index'])->name('dashboard');
-    });
-    Route::post('/store', [App\Http\Controllers\ProfileController::class, 'store'])->name('profiles.store');
-    Route::put('/update/{id}', [App\Http\Controllers\ProfileController::class, 'update'])->name('profiles.update');
-
-    Route::post('/educations/store', [App\Http\Controllers\ProfileController::class, 'storeEducation'])->name('educations.store');
-    Route::put('/educations/update/{id}', [App\Http\Controllers\ProfileController::class, 'updateEducation'])->name('educations.update');
-
-    Route::post('/references/store', [ReferenceController::class, 'store'])->name('references.store');
-    Route::put('/references/update/{id}', [ReferenceController::class, 'update'])->name('references.update');
-
-    Route::post('/summary/store', [SummaryController::class, 'store'])->name('summary.store');
-    Route::put('/summary/{id}/update', [SummaryController::class, 'update'])->name('summary.update');
-
-    Route::post('/work_history/store', [WorkHistoryController::class, 'store'])->name('work_history.store');
-    Route::put('/work_history/update/{id}', [WorkHistoryController::class, 'update'])->name('work_history.update');
-
-    Route::get('skills', [SkillsController::class, 'index'])->name('skills.index');
-    Route::get('skills/create', [SkillsController::class, 'create'])->name('skills.create');
-    Route::post('skills', [SkillsController::class, 'store'])->name('skills.store');
-    Route::get('skills/search', [SkillsController::class, 'search'])->name('skills.search');
-    Route::get('skills/{skill}/edit', [SkillsController::class, 'edit'])->name('skills.edit');
-    Route::put('skills/{skill}', [SkillsController::class, 'update'])->name('skills.update');
-    Route::delete('skills/{skill}', [SkillsController::class, 'destroy'])->name('skills.destroy');
-
-    Route::post('/hobby/store', [HobbyController::class, 'store'])->name('hobby.store');
-    Route::put('/hobby/update/{id}', [HobbyController::class, 'update'])->name('hobby.update');
-
-    Route::post('/projects/store', [ProjectController::class, 'store'])->name('projects.store');
-    Route::put('/projects/update/{id}', [ProjectController::class, 'update'])->name('projects.update');
+Route::prefix('/')->middleware('guest')->group(function () {
+    Route::get('login', function () {return view('auth.login');})->name('login');
+    Route::post('login',[App\Http\Controllers\AuthController::class,'login'])->name('login.perform');
+    Route::get('register', function () {return view('auth.register');})->name('register');
+    Route::post('register',[App\Http\Controllers\AuthController::class,'store'])->name('register.perform');
 });
 
-Route::get('/',[FrontendController::class,'index'])->name('frontend.index');
+Route::prefix('/')->middleware('auth')->group(function () {
+    Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+    Route::group(['prefix' => 'developer'], function(){
+        Route::get('/', [App\Http\Controllers\Developer\DashboardController::class, 'index'])->name('developer');
+        Route::group(['prefix' => 'profile'], function(){
+            Route::get('/', [App\Http\Controllers\Developer\ProfileController::class, 'create'])->name('developer.profile');
+            Route::post('perform', [App\Http\Controllers\Developer\ProfileController::class, 'update'])->name('developer.profile.perform');
+            Route::post('change/password', [App\Http\Controllers\Developer\ProfileController::class, 'show'])->name('developer.profile.change.password');
+            Route::post('picture/update', [App\Http\Controllers\Developer\ProfileController::class, 'picture_update'])->name('developer.change-profile.picture');
+        });
+    });
+});
+Route::get('/',[App\Http\Controllers\WebsiteController::class, 'index'])->name('website');
 Route::get('{user_id}', [FrontendController::class, 'show'])->name('frontend.profile.show');
 Route::get('{user_id}/resume', [FrontendController::class, 'resume'])->name('frontend.profile.resume');
 Route::get('{user_id}/projects', [FrontendController::class, 'projects'])->name('frontend.profile.projects');

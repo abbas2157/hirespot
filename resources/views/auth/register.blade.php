@@ -102,7 +102,7 @@
                     <div class="signup-form text-white">
                         <h2 class="mb-4">Sign Up</h2>
                         <p class="mb-4">Please enter your credentials</p>
-                        <form method="POST" action="{{ route('user.register') }}" id="regForm"
+                        <form method="POST" action="{{ route('register.perform') }}" id="regForm"
                             class="signup-input mt-4" enctype="multipart/form-data">
                             @csrf
                             <div class="password-container">

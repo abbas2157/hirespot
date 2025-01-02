@@ -55,7 +55,7 @@ class AuthController extends Controller
             if (Auth::user()->email === 'admin@admingmail.com') {
                 return redirect()->route('admin.index');
             }
-            return redirect('/dashboard');
+            return redirect('developer');
         }
 
         return redirect('login')->withErrors(['default' => 'Invalid user details']);
